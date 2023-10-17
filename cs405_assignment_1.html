@@ -1,0 +1,104 @@
+<head>
+    <title>CS 405 Assignment 1</title>
+    <link rel="stylesheet" type="text/css" href="cs405_assignment_1.css">
+</head>
+
+<body>
+
+    <svg viewBox="0 20 120 150" xmlns="http://www.w3.org/2000/svg" class="viewboxcontainer" id="svg_box" width="800px" height="600px">
+
+    </svg>
+
+    <script>
+        var year = ["2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022"];
+        var amount = ["3287","3252","3169","3246","3193","3168","3342","3476","3710","4194","4146"];
+        var box = document.getElementById("svg_box");
+        
+        //Data Entry
+        var gap = 12;
+        for (var i = 0; i < amount.length; i++) {
+            var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", -gap*i);
+            rect.setAttribute("y", -120);
+            rect.setAttribute("width", 5);
+            rect.setAttribute("height", (amount[i]/100));
+            rect.setAttribute("transform", "rotate(-180)");
+            rect.setAttribute("style", "fill: blue;");
+            box.appendChild(rect);
+
+            var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", gap*i-7);
+            text.setAttribute("y", 125);
+            text.setAttribute("fill", "black");
+            text.setAttribute("font-size",4);
+            text.textContent = year[i];
+            box.appendChild(text);
+
+            var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", ((amount[i]/200)-125));
+            text.setAttribute("y", gap*i-1.5);
+            text.setAttribute("fill", "white");
+            text.setAttribute("font-size",4);
+            text.setAttribute("transform", "rotate(-90)");
+            text.textContent = amount[i];
+            box.appendChild(text);
+        }
+
+        //Chart Setup
+        var rect_x = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect_x.setAttribute("x", 10);
+        rect_x.setAttribute("y", -120);
+        rect_x.setAttribute("width",0.5);
+        rect_x.setAttribute("height", 60);
+        rect_x.setAttribute("transform", "rotate(-180)");
+        rect_x.setAttribute("style", "fill: black;");
+        box.appendChild(rect_x);
+
+        var rect_y = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect_y.setAttribute("x", -120);
+        rect_y.setAttribute("y", -10);
+        rect_y.setAttribute("width",0.5);
+        rect_y.setAttribute("height", 135);
+        rect_y.setAttribute("transform", "rotate(-90)");
+        rect_y.setAttribute("style", "fill: black;");
+        box.appendChild(rect_y);
+
+        var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", 127);
+        text.setAttribute("y", 120);
+        text.setAttribute("fill", "black");
+        text.setAttribute("font-size",4);
+        text.setAttribute("font-weight","bold");
+        text.textContent = "Year";
+        box.appendChild(text);
+
+        var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", 20);
+        text.setAttribute("y", 132);
+        text.setAttribute("fill", "black");
+        text.setAttribute("font-size",4);
+        text.setAttribute("font-weight","bold");
+        text.textContent = "Graph of Total Suicides / Year (2012-2022)";
+        box.appendChild(text);
+
+        var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", -22);
+        text.setAttribute("y", 57);
+        text.setAttribute("fill", "black");
+        text.setAttribute("font-size",4);
+        text.setAttribute("font-weight","bold");
+        text.textContent = "Total Suicides";
+        box.appendChild(text);
+
+        for (var i = 1; i < 6; i++) {
+            var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", -25);
+            text.setAttribute("y", 120-(i*10));
+            text.setAttribute("fill", "black");
+            text.setAttribute("font-size",4);
+            text.setAttribute("font-weight","bold");
+            text.textContent = i*1000;
+            box.appendChild(text);
+        }
+    </script>
+</body>
